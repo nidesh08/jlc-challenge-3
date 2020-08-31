@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="interests.json"></script>
+        <script src="regions.json"></script>
+    </head>
+    <body>
+        <style>
+            #formTable
+            {
+                margin:0 auto;
+                border:solid;
+            }
+            td
+            {
+                padding: 5px;
+                width: 100px;  
+            }
+        </style>
+
+        <table id="formTable">
+            <tr><!--cannot have numbers-->
+                <td><label for="firstName">First Name:</label></td>
+                <td colspan="2"><input type="text" name="firstName" id="firstName" maxlength="50" required autocomplete="off"></td>
+            </tr>
+            <tr><!--cannot have numbers-->
+                <td><label for="lastName">Last Name:</label></td>
+                <td colspan="2"><input type="text" name="lastName" id="LastName" maxlength="50" required autocomplete="off"></td>  
+            </tr>
+            <tr><!--cannot have numbers-->
+                <td><label for="middleName">Middle Name:</label></td>
+                <td colspan="2"><input type="text" name="middleName" id="middleName" maxlength="50" autocomplete="off"></td>  
+            </tr>
+            <tr>
+                <td><label for="birthDate">Birth Date:</label></td>
+                <td colspan="2"><input type="date" name="birthDate" id="birthDate" required></td>
+            </tr>
+            <tr>
+                <td><label>Gender:</label></td>
+                <td colspan="2"><!--must be represented by images -->
+                    <input type="radio" name="gender" id="genderMale" value="Male" required>
+                    <label for="genderMale">Male</label>
+                    <input type="radio" name="gender"id="genderFemale"  value="Female" required>
+                    <label for="genderFemale">Female</label>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Address:</label></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><label for="region">Region:</label></td>
+                <td>
+                    <select id="region" onclick="selectRegion()">
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><label for="province">Province:</label></td>
+                <td><input type="text" name="province" id="provice" maxlength="50" required></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><label for="city">City:</label></td>
+                <td><input type="text" name="city" id="city" maxlength="50" required></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><label for="barangay">Barangay:</label></td>
+                <td><input type="text" name="barangay" id="barangay" maxlength="50" required></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><label for="street">Street:</label></td>
+                <td><input type="text" name="street" id="street" maxlength="100" required></td>
+            </tr>
+            <tr>
+                <td><label for="interest">Interests:</label></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="2"><!--try lang-->
+                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                    <label for="vehicle1"> I have a bike</label><br>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td colspan="2">
+                    <input type="checkbox" id="vehicle1" name="vehicle1" value="NoBike">
+                    <label for="vehicle1"> I dont have a bike</label><br>
+                </td>
+            </tr>
+            
+                        
+            
+
+
+        </table>
+
+        <script>
+            var regionSelect=document.getElementById("region");
+            function selectRegion()
+            {
+                for(i=0; i<regionSourceArray.length; i++) //dapat magstop yung pag add once na maclick
+                {
+                regionSelect.innerHTML+='<option value="regionSourceArray[i].RegionID">' + regionSourceArray[i].RegionName + '</option>';
+                }
+            }
+            
+        
+        </script>
+    </body>
+</html>
