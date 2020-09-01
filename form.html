@@ -4,10 +4,11 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="interests.json"></script>
         <script src="regions.json"></script>
+        <title>Challenge 3</title>
     </head>
-    <body>
+    <body onload="interestFunction()">
         <style>
-            #formTable
+            #formTable, th, tr
             {
                 margin:0 auto;
                 border:solid;
@@ -17,99 +18,209 @@
                 padding: 5px;
                 width: 100px;  
             }
+            .column
+            {
+                float: left;
+                width:40%;
+            }
+            .column2
+            {
+                float: left;
+                width:60%;
+            }
+            select, option
+            {
+                width:160px;
+            }
+            img
+            {
+                height: 40px;
+                width: 40px;
+            }
+            .radioHidden
+            {
+                position:absolute;
+                left: -100px;
+            }
+            input[type=radio]:checked + label>img {
+            border: 3px solid gray;
+            border-radius:100px;
+            }
+
         </style>
-
-        <table id="formTable">
-            <tr><!--cannot have numbers-->
-                <td><label for="firstName">First Name:</label></td>
-                <td colspan="2"><input type="text" name="firstName" id="firstName" maxlength="50" required autocomplete="off"></td>
-            </tr>
-            <tr><!--cannot have numbers-->
-                <td><label for="lastName">Last Name:</label></td>
-                <td colspan="2"><input type="text" name="lastName" id="LastName" maxlength="50" required autocomplete="off"></td>  
-            </tr>
-            <tr><!--cannot have numbers-->
-                <td><label for="middleName">Middle Name:</label></td>
-                <td colspan="2"><input type="text" name="middleName" id="middleName" maxlength="50" autocomplete="off"></td>  
-            </tr>
-            <tr>
-                <td><label for="birthDate">Birth Date:</label></td>
-                <td colspan="2"><input type="date" name="birthDate" id="birthDate" required></td>
-            </tr>
-            <tr>
-                <td><label>Gender:</label></td>
-                <td colspan="2"><!--must be represented by images -->
-                    <input type="radio" name="gender" id="genderMale" value="Male" required>
-                    <label for="genderMale">Male</label>
-                    <input type="radio" name="gender"id="genderFemale"  value="Female" required>
-                    <label for="genderFemale">Female</label>
-                </td>
-            </tr>
-            <tr>
-                <td><label>Address:</label></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><label for="region">Region:</label></td>
-                <td>
-                    <select id="region" onclick="selectRegion()">
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><label for="province">Province:</label></td>
-                <td><input type="text" name="province" id="provice" maxlength="50" required></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><label for="city">City:</label></td>
-                <td><input type="text" name="city" id="city" maxlength="50" required></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><label for="barangay">Barangay:</label></td>
-                <td><input type="text" name="barangay" id="barangay" maxlength="50" required></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><label for="street">Street:</label></td>
-                <td><input type="text" name="street" id="street" maxlength="100" required></td>
-            </tr>
-            <tr>
-                <td><label for="interest">Interests:</label></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td colspan="2"><!--try lang-->
-                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                    <label for="vehicle1"> I have a bike</label><br>
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td colspan="2">
-                    <input type="checkbox" id="vehicle1" name="vehicle1" value="NoBike">
-                    <label for="vehicle1"> I dont have a bike</label><br>
-                </td>
-            </tr>
-            
-                        
-            
-
-
-        </table>
+        <div class="column">
+            <form> <!--how to remove trailing values in link bar-->
+                <table id="formTable">
+                    <tr>
+                        <td><label for="firstName">First Name:</label></td>
+                        <td colspan="2"><input type="text" name="firstName" id="firstName" maxlength="50" 
+                            pattern="[A-Za-z]" title="Cannot have numbers" required autocomplete="off"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="lastName">Last Name:</label></td>
+                        <td colspan="2"><input type="text" name="lastName" id="lastName" maxlength="50"
+                            pattern="[A-Za-z]" title="Cannot have numbers" required autocomplete="off"></td>  
+                    </tr>
+                    <tr>
+                        <td><label for="middleName">Middle Name:</label></td>
+                        <td colspan="2"><input type="text" name="middleName" id="middleName" maxlength="50"
+                            pattern="[A-Za-z]" title="Cannot have numbers" autocomplete="off"></td>  
+                    </tr>
+                    <tr>
+                        <td><label for="birthDate">Birth Date:</label></td>
+                        <td colspan="2"><input type="date" name="birthDate" id="birthDate" required></td>
+                    </tr>
+                    <tr>
+                        <td><label>Gender:</label></td>
+                        <td colspan="2">
+                            <input type="radio" name="gender" id="genderMale" value="Male" class="radioHidden" required>
+                            <label for="genderMale"><img src="male.png"></label>
+                            <input type="radio" name="gender" id="genderFemale"  value="Female" class="radioHidden" required>
+                            <label for="genderFemale"><img src="female.png"></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Address:</label></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><label for="region">Region:</label></td>
+                        <td>
+                            <select id="region" onclick="selectRegion()">
+                            
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><label for="province">Province:</label></td>
+                        <td><input type="text" name="province" id="province" maxlength="50" required autocomplete="off"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><label for="city">City:</label></td>
+                        <td><input type="text" name="city" id="city" maxlength="50" required autocomplete="off"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><label for="barangay">Barangay:</label></td>
+                        <td><input type="text" name="barangay" id="barangay" maxlength="50" required autocomplete="off"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><label for="street">Street:</label></td>
+                        <td><input type="text" name="street" id="street" maxlength="100" required autocomplete="off"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="interest">Interests:</label></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td id="interestDisplay" colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td colspan=3><button id="submit" onclick="submit()">Submit</button></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+           
+        <div class="column2">
+            <table>
+                <tr>
+                    <th rowspan="2">First Name:</th>
+                    <th rowspan="2">Last Name:</th>
+                    <th rowspan="2">Middle Name:</th>
+                    <th rowspan="2">Birth Date:</th>
+                    <th rowspan="2">Gender:</th>
+                    <th colspan="5">Address:</th>
+                    <th rowspan="2">Interest:</th>
+                </tr>
+                <tr>
+                    <th>Region:</th>
+                    <th>Province:</th>
+                    <th>City:</th>
+                    <th>Barangay:</th>
+                    <th>Street:</th>
+                    
+                </tr>
+            </table>
+        </div>
 
         <script>
             var regionSelect=document.getElementById("region");
+            var interestList=document.getElementById("interestDisplay");
+            var i=0;
+            var Interests=[
+                {
+                    "interestId":""
+                }
+            ];
             function selectRegion()
             {
-                for(i=0; i<regionSourceArray.length; i++) //dapat magstop yung pag add once na maclick
+                if (i==0)
                 {
-                regionSelect.innerHTML+='<option value="regionSourceArray[i].RegionID">' + regionSourceArray[i].RegionName + '</option>';
+                    for(i=0; i<regionSourceArray.length; i++)
+                    {
+                        regionSelect.innerHTML+='<option value="'+regionSourceArray[i].RegionID+'">' + regionSourceArray[i].RegionName + '</option>';
+                    }
                 }
             }
-            
+
+            function interestFunction()
+            {
+                for (x=0; x<interestSourceArray.length; x++)
+                {
+                    interestList.innerHTML+='<input type="checkbox" id="'+interestSourceArray[x].interestId+'" name="interest" value="'+interestSourceArray[x].interestName+'">' +
+                    '<label for="'+interestSourceArray[x].interestId+'">' + interestSourceArray[x].interestName + '<label>' + '<br>'
+                }
+            }
+
+            function submit()
+            {
+                var firstName=document.getElementById("firstName").value;
+                var lastName=document.getElementById("lastName").value;
+                var middleName=document.getElementById("middleName").value;
+                var birthDate=document.getElementById("birthDate").value;
+                var genderFemale=document.getElementById("genderFemale").value;
+                var genderMale=document.getElementById("genderMale").value;
+                var region=document.getElementById("region").value;
+                var province=document.getElementById("province").value;
+                var city=document.getElementById("city").value;
+                var barangay=document.getElementById("barangay").value;
+                var street=document.getElementById("street").value;
+                var vehicle=document.getElementById("vehicle").value;
+                var vehicle1=document.getElementById("vehicle").value;
+                
+        
+                var gender=document.getElementsByName("gender");
+                
+                for(var i = 0; i < gender.length; i++){
+                    if(gender[i].checked){
+                    var radioCheck = gender[i].value;
+                    }
+                }
+
+                while (counter<interestSourceArray.length)
+                {
+                    var x=0;
+                    if (document.getElementById("interestSourceArray[x].interestId").check)
+                    {
+                        Interest.push(
+                            {
+                                "interestId":interestSourceArray[x].interestId
+                            }
+                        )
+                        
+                    }
+                    counter++;
+                    x++;
+                }
+
+
+            }
+
+
         
         </script>
     </body>
