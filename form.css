@@ -1,0 +1,60 @@
+#formTable,th
+{
+    margin:0 auto;
+    border:solid;
+    font-size: 15px;
+}
+#dataTable
+{
+    margin:0 auto;
+    border:solid;
+    text-align:center;
+}
+.middle
+{
+    width:120px;
+}
+.editDelete
+{
+    width:80px;
+}
+
+.column
+{
+    float: bottom;
+    width:100%;
+}
+.column2
+{
+    float: bottom;
+    width:100%;
+}
+select, option
+{
+    width:160px;
+}
+img
+{
+    height: 40px;
+    width: 40px;
+}
+.radioHidden
+{
+    position:absolute;
+    opacity:0;
+}
+input[type=radio]:checked + label>img {
+    border: 3px solid gray;
+    border-radius:100px;
+}
+#firstName, #lastName, #middleName
+{
+    width:300px;
+}
+td
+{
+    padding: 5px;
+    border-spacing: 5px;
+    margin: 0 auto;  
+}
+
