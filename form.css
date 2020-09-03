@@ -1,37 +1,40 @@
-#formTable,th
+body
+{
+    background-color:snow;
+}
+table
 {
     margin:0 auto;
     border:solid;
     font-size: 15px;
+    box-shadow: 5px 5px 10px darkgray;
 }
-#dataTable
+#formTable, #dataTable
 {
-    margin:0 auto;
-    border:solid;
+    background-color:antiquewhite;
+    border: 5px solid saddlebrown;
+}
+th
+{
+    background-color:saddlebrown;
+    color:antiquewhite;
+}
+#dataTable, #msg, #msg1, #msg2
+{
     text-align:center;
 }
-.middle
+input, select
 {
-    width:120px;
+    border: 1px solid saddlebrown;
 }
-.editDelete
+#birthDate
 {
-    width:80px;
+    width:300px;
+    text-align:center;
 }
-
-.column
+#firstName, #lastName, #middleName
 {
-    float: bottom;
-    width:100%;
-}
-.column2
-{
-    float: bottom;
-    width:100%;
-}
-select, option
-{
-    width:160px;
+    width:300px;
 }
 img
 {
@@ -44,17 +47,38 @@ img
     opacity:0;
 }
 input[type=radio]:checked + label>img {
-    border: 3px solid gray;
+    border: 2px solid saddlebrown;
     border-radius:100px;
 }
-#firstName, #lastName, #middleName
+#province, #city, #barangay, #street
 {
-    width:300px;
+    width:220px;
 }
-td
+#region
 {
-    padding: 5px;
-    border-spacing: 5px;
-    margin: 0 auto;  
+    width:225px;
+}
+.button
+{
+    text-align:center;
+} 
+#submit
+{
+    height:25px;
+    width:70px;
+    background-color:saddlebrown;
+    color:antiquewhite;
+    border:0px;
+    border-radius:5px;
+    box-shadow: 5px 5px 30px darkgray;
+}
+.heading
+{
+    width:200px;
+    text-align:center;
+}
+.heading1
+{
+    width:250px;
 }
 

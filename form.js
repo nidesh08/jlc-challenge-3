@@ -1,10 +1,9 @@
-        var Interests=[
-        
-        ];
+        var Interests=[];
         var data=[{}]; 
         var r=0;
         var dataCounter=1;
         var editClickCounter=0;
+
         function selectRegion()
         {
             
@@ -30,17 +29,45 @@
 
         function submitForm()
         {
+            var pattern = /[0-9]/g;
+            var test = pattern.test(document.getElementById("firstName").value);
+            var test1= pattern.test(document.getElementById("lastName").value);
+            var test2= pattern.test(document.getElementById("middleName").value);
+            if (test==true)
+            {
+                document.getElementById("msg").innerHTML="First name cannot have numbers.";
+                document.getElementById("msg1").innerHTML="";
+                document.getElementById("msg2").innerHTML="";
+            }
+            else if(test1==true)
+            {
+                document.getElementById("msg").innerHTML="";
+                document.getElementById("msg1").innerHTML="Last name cannot have numbers.";
+                document.getElementById("msg2").innerHTML="";
+            }
+            else if(test2==true)
+            {
+                document.getElementById("msg").innerHTML="";
+                document.getElementById("msg1").innerHTML="";
+                document.getElementById("msg2").innerHTML="Middle name cannot have numbers.";  
+            }
+            else
+            {
+                document.getElementById("msg").innerHTML="";
+                document.getElementById("msg1").innerHTML="";
+                document.getElementById("msg2").innerHTML="";
             if ((document.getElementById("firstName").value!="")&&(document.getElementById("lastName").value!="")&&
             (document.getElementById("birthDate").value!="")&&(document.getElementById("genderMale").checked || document.getElementById("genderFemale").checked)&&
             (document.getElementById("region").value!="")&&(document.getElementById("province").value!="")&&(document.getElementById("city").value!="")&&
             (document.getElementById("barangay").value!="")&&(document.getElementById("street").value!=""))
-            {
+            {              
                 if (editClickCounter==0)
                 {
                     var gender=document.getElementsByName("gender");
                     for(var g = 0; g < gender.length; g++)
                     {
-                        if(gender[g].checked){
+                        if(gender[g].checked)
+                        {
                             var radioCheck = gender[g].value;
                         }
                     }
@@ -48,21 +75,22 @@
                     var interest=document.getElementsByName("interest");
                     for(var i = 0; i < interest.length; i++)
                     {
-                        if(interest[i].checked){
-                        Interests.push({
-                        "interestId":interest[i].value
+                        if(interest[i].checked)
+                        {
+                            Interests.push({
+                            "interestId":interest[i].value
                         })
                     }
                     }
     
                     var itn=0;
-                    var idToName="";
+                    var idToName=[];
                     var interestIdToName;
                     for(itn=0; itn<Interests.length; itn++)
                     {
                         interestIdToName=Interests[itn].interestId;
                         interestIdToName-=1;
-                        idToName+=interestSourceArray[interestIdToName].interestName+'<br>';
+                        idToName.push(interestSourceArray[interestIdToName].interestName);
                     }
                     
                     data.splice(dataCounter, data.length,
@@ -85,6 +113,7 @@
                     while(dataCounter<data.length)
                     {
                         var table=document.getElementById("dataTable");
+                        var join=data[dataCounter].interest.join("<br>");
                         var row=table.insertRow(dataCounter+1);
                         var cell1=row.insertCell(0);
                         var cell2=row.insertCell(1);
@@ -109,7 +138,7 @@
                         cell8.innerHTML=data[dataCounter].city;
                         cell9.innerHTML=data[dataCounter].barangay;
                         cell10.innerHTML=data[dataCounter].street;
-                        cell11.innerHTML=data[dataCounter].interest;
+                        cell11.innerHTML=join;
                         cell12.innerHTML='<button type="button" id="editBtn" onclick="editFunction(this)"><i class="fa fa-pencil-square-o"></i></button>'+' '+
                                          '<button type="button" id="deleteBtn" onclick="deleteFunction(this)"><i class="fa fa-times"></i></button>';
                         
@@ -122,7 +151,8 @@
                     var gender=document.getElementsByName("gender");
                     for(var g = 0; g < gender.length; g++)
                     {
-                        if(gender[g].checked){
+                        if(gender[g].checked)
+                        {
                             var radioCheck = gender[g].value;
                         }
                     }
@@ -130,21 +160,23 @@
                     var interest=document.getElementsByName("interest");
                     for(var i = 0; i < interest.length; i++)
                     {
-                        if(interest[i].checked){
-                        Interests.push({
-                        "interestId":interest[i].value
+                        if(interest[i].checked)
+                        {
+                            Interests.push({
+                            "interestId":interest[i].value
                         })
                     }
                     }
     
                     var itn=0;
-                    var idToName="";
+                    var idToName=[];
                     var interestIdToName;
+                    
                     for(itn=0; itn<Interests.length; itn++)
                     {
                         interestIdToName=Interests[itn].interestId;
                         interestIdToName-=1;
-                        idToName+=interestSourceArray[interestIdToName].interestName+'<br>';
+                        idToName.push(interestSourceArray[interestIdToName].interestName);
                     }
                     
                     data.splice(position, 1,
@@ -164,74 +196,109 @@
                         clearInput();
 
                         var table=document.getElementById("dataTable");
-                        table.rows[position].cells[0].innerHTML=data[position].firstName;
-                        table.rows[position].cells[1].innerHTML=data[position].lastName;
-                        table.rows[position].cells[2].innerHTML=data[position].middleName;
-                        table.rows[position].cells[3].innerHTML=data[position].birthDate;
-                        table.rows[position].cells[4].innerHTML=data[position].gender;
-                        table.rows[position].cells[5].innerHTML=data[position].region;
-                        table.rows[position].cells[6].innerHTML=data[position].province;
-                        table.rows[position].cells[7].innerHTML=data[position].city;
-                        table.rows[position].cells[8].innerHTML=data[position].barangay;
-                        table.rows[position].cells[9].innerHTML=data[position].street;
-                        table.rows[position].cells[10].innerHTML=data[position].interest;
-                        table.rows[position].cells[11].innerHTML='<button type="button" id="editBtn" onclick="editFunction(this)"><i class="fa fa-pencil-square-o"></i></button>'+' '+
+                        var join=data[position].interest.join("<br>");
+                        table.rows[indexR].cells[0].innerHTML=data[position].firstName;
+                        table.rows[indexR].cells[1].innerHTML=data[position].lastName;
+                        table.rows[indexR].cells[2].innerHTML=data[position].middleName;
+                        table.rows[indexR].cells[3].innerHTML=data[position].birthDate;
+                        table.rows[indexR].cells[4].innerHTML=data[position].gender;
+                        table.rows[indexR].cells[5].innerHTML=data[position].region;
+                        table.rows[indexR].cells[6].innerHTML=data[position].province;
+                        table.rows[indexR].cells[7].innerHTML=data[position].city;
+                        table.rows[indexR].cells[8].innerHTML=data[position].barangay;
+                        table.rows[indexR].cells[9].innerHTML=data[position].street;
+                        table.rows[indexR].cells[10].innerHTML=join;
+                        table.rows[indexR].cells[11].innerHTML='<button type="button" id="editBtn" onclick="editFunction(this)"><i class="fa fa-pencil-square-o"></i></button>'+' '+
                                                                 '<button type="button" id="deleteBtn" onclick="deleteFunction(this)"><i class="fa fa-times"></i></button>';
-                        
-        
-
                         editClickCounter=0;
                 }
-            }         
+            } 
+        }        
         }
 
         function clearInput()
-    {
-        document.getElementById("firstName").value="";
-        document.getElementById("lastName").value="";
-        document.getElementById("middleName").value="";
-        document.getElementById("birthDate").value="";
-        document.getElementById("genderFemale").checked=false;
-        document.getElementById("genderMale").checked=false;
-        document.getElementById("region").value="";
-        document.getElementById("province").value="";
-        document.getElementById("city").value="";
-        document.getElementById("barangay").value="";
-        document.getElementById("street").value="";
-        var interest=document.getElementsByName("interest");
-        var i=0;
-        while (i<interest.length)
         {
-            interest[i].checked=false;
-            i++;
-        }
-        Interests.splice(0, Interests.length)
+            document.getElementById("firstName").value="";
+            document.getElementById("lastName").value="";
+            document.getElementById("middleName").value="";
+            document.getElementById("birthDate").value="";
+            document.getElementById("genderFemale").checked=false;
+            document.getElementById("genderMale").checked=false;
+            document.getElementById("region").value="";
+            document.getElementById("province").value="";
+            document.getElementById("city").value="";
+            document.getElementById("barangay").value="";
+            document.getElementById("street").value="";
+            
+            var interest=document.getElementsByName("interest");
+            var i=0;
+            while (i<interest.length)
+            {
+                interest[i].checked=false;
+                i++;
+            }
+            Interests.splice(0, Interests.length)
 
-    }
-    function editFunction(w)
-    {
-        indexR=w.parentNode.parentNode.rowIndex;
-        document.getElementById("firstName").value=data[indexR-1].firstName;
-        document.getElementById("lastName").value=data[indexR-1].lastName;
-        document.getElementById("middleName").value=data[indexR-1].middleName;
-        document.getElementById("birthDate").value=data[indexR-1].birthDate;
-        //document.getElementById("gender").value=data[indexR].gender;
-        document.getElementById("region").value=data[indexR-1].region;
-        document.getElementById("province").value=data[indexR-1].province;
-        document.getElementById("city").value=data[indexR-1].city;
-        document.getElementById("barangay").value=data[indexR-1].barangay;
-        document.getElementById("street").value=data[indexR-1].street;
-//show picked gender and interest on the form
-//how to integrate this into form huhu
-        editClickCounter=1;
-        position=indexR;
-    }
-    function deleteFunction(w)
-    {
-        var table=document.getElementById("dataTable");
-        indexR=w.parentNode.parentNode.rowIndex;
-        data.splice(indexR,1);
-        table.deleteRow(indexR);
-        dataCounter--;
-        clearInput();
-    }
+        }
+        
+        function editFunction(w)
+        {
+            indexR=w.parentNode.parentNode.rowIndex;//starts with 2
+            position=indexR-1;
+            document.getElementById("firstName").value=data[position].firstName;
+            document.getElementById("lastName").value=data[position].lastName;
+            document.getElementById("middleName").value=data[position].middleName;
+            document.getElementById("birthDate").value=data[position].birthDate;
+            
+            if ((data[position].gender)==("Female"))
+            {
+                document.getElementById("genderFemale").checked=true;
+                document.getElementById("genderMale").checked=false;
+            }
+            else if ((data[position].gender)==("Male"))
+            {
+                document.getElementById("genderFemale").checked=false;
+                document.getElementById("genderMale").checked=true;
+            }
+
+            document.getElementById("region").value=data[position].region;
+            document.getElementById("province").value=data[position].province;
+            document.getElementById("city").value=data[position].city;
+            document.getElementById("barangay").value=data[position].barangay;
+            document.getElementById("street").value=data[position].street;
+            
+            var q=0;
+            var o=0;
+            while(q<data[position].interest.length)
+            {
+                while (o<interestSourceArray.length)
+                {
+                    if ((data[position].interest[q])==(interestSourceArray[o].interestName))
+                    {
+                        document.getElementsByName("interest")[o].checked=true;
+                        q++;
+                    }
+                    else
+                    {
+                        document.getElementsByName("interest")[o].checked=false;
+                    }
+                
+                    o++;  
+                } 
+            }
+
+            editClickCounter=1;
+        }
+    
+        function deleteFunction(w)
+        {
+            var table=document.getElementById("dataTable");
+            indexR=w.parentNode.parentNode.rowIndex;
+            data.splice(indexR-1,1);
+            table.deleteRow(indexR);
+            dataCounter--;
+            editClickCounter=0;
+            clearInput();
+        }
+
+        

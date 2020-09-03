@@ -9,9 +9,8 @@
         <title>Challenge 3</title>
     </head>
     <body onload="interestFunction()">
-       
-        <div class="column">
-            <form > <!--how to remove trailing values in link bar action="" method="POST" onsubmit="return submitForm()"-->
+        <div>
+            <form action="">
                 <table id="formTable">
                     <tr>
                         <td><label for="firstName">First Name:</label></td>
@@ -19,14 +18,23 @@
                             pattern="[A-Za-z]" title="Cannot have numbers" required autocomplete="off"></td>
                     </tr>
                     <tr>
+                        <td colspan="3" id="msg"></td>
+                    </tr>
+                    <tr>
                         <td><label for="lastName">Last Name:</label></td>
                         <td colspan="2"><input type="text" name="lastName" id="lastName" maxlength="50"
                             pattern="[A-Za-z]" title="Cannot have numbers" required autocomplete="off"></td>  
                     </tr>
                     <tr>
+                        <td colspan="3" id="msg1"></td>
+                    </tr>
+                    <tr>
                         <td><label for="middleName">Middle Name:</label></td>
                         <td colspan="2"><input type="text" name="middleName" id="middleName" maxlength="50"
                             pattern="[A-Za-z]" title="Cannot have numbers" autocomplete="off"></td>  
+                    </tr>
+                    <tr>
+                        <td colspan="3" id="msg2"></td>
                     </tr>
                     <tr>
                         <td><label for="birthDate">Birth Date:</label></td>
@@ -48,7 +56,7 @@
                         <td></td>
                         <td><label for="region">Region:</label></td>
                         <td>
-                            <select id="region" onclick="selectRegion()">
+                            <select id="region" onclick="selectRegion()" required>
                             </select>
                         </td>
                     </tr>
@@ -80,35 +88,32 @@
                         <td id="interestDisplay" colspan="2"></td>
                     </tr>
                     <tr>
-                        <td colspan=3><button id="submit" onclick="submitForm()">Submit</button></td>
+                        <td colspan=3 class="button"><button type="submit" id="submit" onclick="submitForm()">Submit</button></td>
                     </tr>
                 </table>
             </form>
         </div>
-           
-        <div class="column2">
+        <br><br>  
+        <div>
             <table id="dataTable">
                 <tr>
-                    <th rowspan="2">First Name:</th>
-                    <th rowspan="2">Last Name:</th>
-                    <th rowspan="2" class="middle">Middle Name:</th>
-                    <th rowspan="2">Birth Date:</th>
-                    <th rowspan="2">Gender:</th>
+                    <th rowspan="2" class="heading">First Name:</th>
+                    <th rowspan="2" class="heading">Last Name:</th>
+                    <th rowspan="2" class="heading1">Middle Name:</th>
+                    <th rowspan="2" class="heading">Birth Date:</th>
+                    <th rowspan="2" class="heading">Gender:</th>
                     <th colspan="5">Address:</th>
-                    <th rowspan="2" class="middle">Interest/s:</th>
-                    <th rowspan="2" class="editDelete"></th>
+                    <th rowspan="2" class="heading">Interest/s:</th>
+                    <th rowspan="2" class="heading"></th>
                 </tr>
                 <tr>
-                    <th>Region:</th>
-                    <th>Province:</th>
-                    <th>City:</th>
-                    <th>Barangay:</th>
-                    <th>Street:</th>
-                    
+                    <th class="heading">Region:</th>
+                    <th class="heading">Province:</th>
+                    <th class="heading">City:</th>
+                    <th class="heading">Barangay:</th>
+                    <th class="heading">Street:</th>    
                 </tr>
             </table>
-        </div>
-
-        
+        </div>   
     </body>
 </html>
