@@ -6,6 +6,7 @@
         <script src="interests.json"></script>
         <script src="regions.json"></script>
         <script src="form.js"></script>
+        <script src="provinces.json"></script>
         <title>Challenge 3</title>
     </head>
     <body onload="interestFunction()">
@@ -63,7 +64,10 @@
                     <tr>
                         <td></td>
                         <td><label for="province">Province:</label></td>
-                        <td><input type="text" name="province" id="province" maxlength="50" required autocomplete="off"></td>
+                        <td>
+                            <select id="province" onclick="selectProvince()" required>
+                            </select>
+                        </td>
                     </tr>
                     <tr>
                         <td></td>

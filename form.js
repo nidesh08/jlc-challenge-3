@@ -3,10 +3,12 @@
         var r=0;
         var dataCounter=1;
         var editClickCounter=0;
-
+        var clickCounter=0;
+        var p=0;
+        var regionID;
+        
         function selectRegion()
         {
-            
             var regionSelect=document.getElementById("region");
             if (r==0)
             {
@@ -15,6 +17,32 @@
                     regionSelect.innerHTML+='<option value="'+regionSourceArray[r].RegionName+'">' + regionSourceArray[r].RegionName + '</option>';
                 }
             }
+            clickCounter=1;
+            document.getElementById("province").innerHTML="";
+        }
+        function selectProvince()
+        {
+            var region=document.getElementById("region").value;
+            var provinceSelect=document.getElementById("province");
+            if(clickCounter==1)
+            {
+                for (var rp=0; rp<regionSourceArray.length; rp++)
+                {
+                    if (region==regionSourceArray[rp].RegionName)
+                    {
+                        regionID=regionSourceArray[rp].RegionID;
+                    }
+                }
+                
+                for (p=0; p<provinceSourceArray.length; p++)
+                {
+                    if(regionID==provinceSourceArray[p].regionID)
+                    {
+                        provinceSelect.innerHTML+='<option value="'+provinceSourceArray[p].provinceName+'">'+provinceSourceArray[p].provinceName + '</option>';
+                    }      
+                }  
+            }       
+            clickCounter=0;
         }
 
         function interestFunction()
@@ -108,7 +136,7 @@
                             "interest":idToName
                         });
                     
-                    clearInput();
+                        clearInput();
     
                     while(dataCounter<data.length)
                     {
@@ -143,6 +171,7 @@
                                          '<button type="button" id="deleteBtn" onclick="deleteFunction(this)"><i class="fa fa-times"></i></button>';
                         
                         dataCounter++;
+                        
                     }
     
                 }
@@ -193,6 +222,7 @@
                             "street":document.getElementById("street").value,
                             "interest":idToName
                         });
+                        
                         clearInput();
 
                         var table=document.getElementById("dataTable");
@@ -211,6 +241,7 @@
                         table.rows[indexR].cells[11].innerHTML='<button type="button" id="editBtn" onclick="editFunction(this)"><i class="fa fa-pencil-square-o"></i></button>'+' '+
                                                                 '<button type="button" id="deleteBtn" onclick="deleteFunction(this)"><i class="fa fa-times"></i></button>';
                         editClickCounter=0;
+                        
                 }
             } 
         }        
@@ -229,7 +260,6 @@
             document.getElementById("city").value="";
             document.getElementById("barangay").value="";
             document.getElementById("street").value="";
-            
             var interest=document.getElementsByName("interest");
             var i=0;
             while (i<interest.length)
@@ -286,7 +316,7 @@
                     o++;  
                 } 
             }
-
+            
             editClickCounter=1;
         }
     
@@ -298,7 +328,7 @@
             table.deleteRow(indexR);
             dataCounter--;
             editClickCounter=0;
-            clearInput();
+            clearInput();    
         }
 
         
