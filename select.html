@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <script src="regions.json"></script>
+        <!--<script src="provinces.json"></script>-->
+        <script src="provinces.json"></script>
+        <script src="select.js"></script>
+        <style>
+            select, button, table
+            {
+                width:200px;
+                height:30px;
+                
+            }
+            table{
+                font-size: 30px;
+            }
+        </style>
+    </head>
+
+<body>
+<table>
+    <tr>
+    <select id="region" onclick="selectRegion()"></select>
+    <select id="province" onclick="selectProvince()"></select>
+    <select id="city" onclick="selectCity()"></select>
+    <select id="barangay" onclick="selectBarangay()"></select>
+    <button type="button" onclick="show()">Show</button>
+</tr>
+
+</table>
+<table id="display">
+
+</table>
+
+</body>
+</html>
