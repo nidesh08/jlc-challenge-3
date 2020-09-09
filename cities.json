@@ -1,4 +1,4 @@
-var citySourceArray=[
+[
 	{
 		"cityID":1,
 		"cityName":"Makati",
