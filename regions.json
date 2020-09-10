@@ -43,10 +43,10 @@ var regionSourceArray=[
         "RegionID":11,
         "RegionName":"Eastern Visayas (Region VIII)"
     },
-    {
+    /*{
         "RegionID":12,
         "RegionName":"Zamboanga Peninsula (Region IX)"
-    },
+    },*/
     {
         "RegionID":13,
         "RegionName":"Northern Mindanao (Region X)"
@@ -55,10 +55,10 @@ var regionSourceArray=[
         "RegionID":14,
         "RegionName":"Davao Region (Region XI)"
     },
-    {
+    /*{
         "RegionID":15,
         "RegionName":"SOCCSKSARGEN (Region XII)"
-    },
+    },*/
     {
         "RegionID":16,
         "RegionName":"Caraga (Region XIII)"

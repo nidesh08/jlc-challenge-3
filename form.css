@@ -50,11 +50,11 @@ input[type=radio]:checked + label>img {
     border: 2px solid saddlebrown;
     border-radius:100px;
 }
-#city, #barangay, #street
+#street
 {
     width:220px;
 }
-#province, #region
+#province, #region, #city, #barangay
 {
     width:225px;
 }

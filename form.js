@@ -5,37 +5,41 @@
     var regionID;
     var provinceClickCounter=0;
     var regionClickCounter=0;
-    var regionSelectedOption;
-    var provinceSelectedOption;
+    var cityClickCounter=0;
+    var barangayClickCounter=0;
+    var position;
 
     function selectRegion()
     {
-        var i=0;
+        var regionCounter=0;
         var regionSelect = document.getElementById("region");
     
-            if(regionClickCounter==0){
-                region.innerHTML=""; 
-                while (i<regionSourceArray.length)
+            if(regionClickCounter==0)
+            {
+                while (regionCounter<regionSourceArray.length)
                 {
-                regionSelect.options[regionSelect.options.length] = new Option(regionSourceArray[i].RegionName, regionSourceArray[i].RegionName);
-                i++;
+                    regionSelect.options[regionCounter] = new Option(regionSourceArray[regionCounter].RegionName, regionSourceArray[regionCounter].RegionName);
+                    regionCounter++;
                 }
-            }     
-        document.getElementById("province").innerHTML="";   
-        provinceClickCounter=1;
+            }
+        
+        document.getElementById("province").innerHTML="";
+        document.getElementById("city").innerHTML="";
+        document.getElementById("barangay").innerHTML="";
         regionClickCounter=1;
+        provinceClickCounter=1;
     }
 
     function selectProvince()
     {
         var regionID;
-        var regionValue = document.getElementById("region").value;
-        var p=0;
-        var r=0;
+        var regionValue=document.getElementById("region").value;
         var provinceSelect = document.getElementById("province");
-        var check=false;
+        var provinceCounter=0;
+
         if (provinceClickCounter==1)
         {
+            provinceSelect.innerHTML="";
             for (var rp=0; rp<regionSourceArray.length; rp++)
             {
                 if (regionValue==regionSourceArray[rp].RegionName)
@@ -44,21 +48,166 @@
                 }
             }
 
-            while(check==false)
+            while (provinceCounter<provinceSourceArray.length)
             {
-                if(regionID==provinceSourceArray[r][p].regionID)
+                if (regionID==provinceSourceArray[provinceCounter].regionID)
                 {
-                    for(p=0; p<provinceSourceArray[r].length; p++)
-                    {
-                        provinceSelect.options[p] = new Option(provinceSourceArray[r][p].provinceName, provinceSourceArray[r][p].provinceName);    
-                        
-                    } 
-                    check=true;  
-                } 
-                r++;     
+                    provinceSelect.options[provinceSelect.options.length] = new Option(provinceSourceArray[provinceCounter].provinceName, provinceSourceArray[provinceCounter].provinceName);    
+                }
+                provinceCounter++;
             }
         }
         provinceClickCounter=0;
+        cityClickCounter=1;
+        document.getElementById("city").innerHTML="";
+        document.getElementById("barangay").innerHTML="";
+    }
+
+    function selectCity()
+    {
+        if (cityClickCounter==1)
+        {
+            var cityRequest = new XMLHttpRequest();
+            cityRequest.open('GET', 'cities.json', true);
+            cityRequest.onload = function () 
+            {
+                var cityData=JSON.parse(cityRequest.response);
+                populateCity(cityData);
+            }
+            cityRequest.send();
+                    
+        }
+        cityClickCounter=0;
+        barangayClickCounter=1;
+        document.getElementById("barangay").innerHTML="";
+    }
+
+    function populateCity(cityData)
+    {
+        for (var i=0; i<cityData.length; i++)
+        {
+            cityArray=cityData;
+            var citySelect=document.getElementById("city");
+            var provinceID;
+            var provinceValue=document.getElementById("province").value;
+            var cityCounter=0;
+            citySelect.innerHTML="";
+            for (var pc=0; pc<provinceSourceArray.length; pc++)
+            {
+                if (provinceValue==provinceSourceArray[pc].provinceName)
+                {
+                    provinceID=provinceSourceArray[pc].provinceID;
+                }
+            }
+
+            while (cityCounter<cityArray.length)
+            {
+                var cityOption;
+                if (provinceID==cityArray[cityCounter].provinceID)
+                {
+                    cityOption=document.createElement("option");
+                    cityOption.text=cityArray[cityCounter].cityName;
+                    cityOption.value=cityArray[cityCounter].cityName;
+                    citySelect.append(cityOption);
+                }    
+                cityCounter++;
+            }
+        }
+    }
+
+    function selectBarangay()
+    {
+        if (barangayClickCounter==1)
+        {
+            var barangayRequest = new XMLHttpRequest();
+            barangayRequest.open('GET', 'barangays.json', true);
+            barangayRequest.onload = function () 
+            {
+                var barangayData=JSON.parse(barangayRequest.response);
+                populateBarangay(barangayData);
+            }
+            barangayRequest.send();        
+        }
+        barangayClickCounter=0;
+    }
+
+    function populateBarangay(barangayData)
+    {
+        var cityRequest = new XMLHttpRequest();
+        cityRequest.open('GET', 'cities.json', true);
+        cityRequest.onload = function () 
+        {
+            var cityData=JSON.parse(cityRequest.response);                
+            for (var i=0; i<barangayData.length; i++)
+            {
+                barangayArray=barangayData;
+                var barangaySelect=document.getElementById("barangay");
+                var cityID;
+                var cityValue=document.getElementById("city").value;
+                var barangayCounter=0;
+                barangaySelect.innerHTML="";
+                for (var pc=0; pc<cityData.length; pc++)
+                {
+                    if (cityValue==cityData[pc].cityName)
+                    {
+                        cityID=cityData[pc].cityID;
+                    }
+                }
+                while (barangayCounter<barangayArray.length)
+                {
+                    var barangayOption;
+                    if (cityID==barangayArray[barangayCounter].cityID)
+                    {
+                        barangayOption=document.createElement("option");
+                        barangayOption.text=barangayArray[barangayCounter].barangayName;
+                        barangayOption.value=barangayArray[barangayCounter].barangayName;
+                        barangaySelect.append(barangayOption);
+                    }    
+                        barangayCounter++;
+                }
+            }
+        }
+        cityRequest.send();
+    }
+    function populateBarangayEdit(barangayData)
+    {
+            let cityRequest = new XMLHttpRequest();
+            cityRequest.open('GET', 'cities.json', true);
+            cityRequest.onload = function () 
+            {
+                var cityData=JSON.parse(cityRequest.response);                
+                for (var i=0; i<barangayData.length; i++)
+                {
+                    barangayArray=barangayData;
+                    var barangaySelect=document.getElementById("barangay");
+                    var cityID;
+                    var cityValue=document.getElementById("city").value;
+                    var barangayCounter=0;
+                    barangaySelect.innerHTML="";
+                    for (var pc=0; pc<cityData.length; pc++)
+                    {
+                        if (cityValue==cityData[pc].cityName)
+                        {
+                            cityID=cityData[pc].cityID;
+                        }
+                    }
+        
+                    while (barangayCounter<barangayArray.length)
+                    {
+                        var barangayOption;
+                        if (cityID==barangayArray[barangayCounter].cityID)
+                        {
+                            barangayOption=document.createElement("option");
+                            barangayOption.text=barangayArray[barangayCounter].barangayName;
+                            barangayOption.value=barangayArray[barangayCounter].barangayName;
+                            barangaySelect.append(barangayOption);
+                        }    
+                        barangayCounter++;
+                    }
+                }
+                document.getElementById("barangay").selectedIndex=data[position].barangayIndex;
+            }
+            cityRequest.send();
     }
 
 
@@ -78,8 +227,6 @@
         var test = pattern.test(document.getElementById("firstName").value);
         var test1= pattern.test(document.getElementById("lastName").value);
         var test2= pattern.test(document.getElementById("middleName").value);
-        regionSelectedOption = document.getElementById("region").options[document.getElementById("region").selectedIndex];
-        provinceSelectedOption = document.getElementById("province").options[document.getElementById("province").selectedIndex];
         
         if (test==true)
         {
@@ -149,10 +296,14 @@
                             "middleName":document.getElementById("middleName").value,
                             "birthDate":document.getElementById("birthDate").value,
                             "gender":radioCheck,
-                            "region":regionSelectedOption.value,
-                            "province":provinceSelectedOption.value,
+                            "region":document.getElementById("region").value,
+                            "regionIndex":document.getElementById("region").selectedIndex,
+                            "province":document.getElementById("province").value,
+                            "provinceIndex":document.getElementById("province").selectedIndex,
                             "city":document.getElementById("city").value,
+                            "cityIndex":document.getElementById("city").selectedIndex,
                             "barangay":document.getElementById("barangay").value,
+                            "barangayIndex":document.getElementById("barangay").selectedIndex,
                             "street":document.getElementById("street").value,
                             "interest":idToName
                         });
@@ -235,10 +386,14 @@
                             "middleName":document.getElementById("middleName").value,
                             "birthDate":document.getElementById("birthDate").value,
                             "gender":radioCheck,
-                            "region":regionSelectedOption.value,
-                            "province":provinceSelectedOption.value,
+                            "region":document.getElementById("region").value,
+                            "regionIndex":document.getElementById("region").selectedIndex,
+                            "province":document.getElementById("province").value,
+                            "provinceIndex":document.getElementById("province").selectedIndex,
                             "city":document.getElementById("city").value,
+                            "cityIndex":document.getElementById("city").selectedIndex,
                             "barangay":document.getElementById("barangay").value,
+                            "barangayIndex":document.getElementById("barangay").selectedIndex,
                             "street":document.getElementById("street").value,
                             "interest":idToName
                         });
@@ -263,13 +418,15 @@
                 }
             } 
         }   
+        regionClickCounter=0;
         provinceClickCounter=1;
-        regionClickCounter=0;         
+        cityClickCounter=1;
+        barangayClickCounter=1;
+            
     }
 
     function clearInput()
     {
-        
         document.getElementById("firstName").value="";
         document.getElementById("lastName").value="";
         document.getElementById("middleName").value="";
@@ -297,9 +454,12 @@
         position=indexR-1;
         document.getElementById("province").innerHTML="";
         document.getElementById("region").innerHTML="";
-        provinceClickCounter=1;
+        document.getElementById("city").innerHTML="";
+        document.getElementById("barangay").innerHTML="";
         regionClickCounter=0;
-        var i=0;
+        provinceClickCounter=1;
+        cityClickCounter=1;
+        barangayClickCounter=1;
         
         document.getElementById("firstName").value=data[position].firstName;
         document.getElementById("lastName").value=data[position].lastName;
@@ -317,72 +477,45 @@
             document.getElementById("genderMale").checked=true;
         }
 
-        var regionID;
         var regionSelect = document.getElementById("region");
-        var dataRegion=data[position].region;
+        selectRegion();
+        regionSelect.selectedIndex=data[position].regionIndex;   
 
-        for (var rr=0; rr<regionSourceArray.length; rr++)
-        {
-            if (dataRegion==regionSourceArray[rr].RegionName)
-            {
-                regionID=regionSourceArray[rr].RegionID;
-            }
-        }
-        if(regionClickCounter==0){
-            while (i<regionSourceArray.length)
-            {
-            regionSelect.options[regionSelect.options.length] = new Option(regionSourceArray[i].RegionName, regionSourceArray[i].RegionName);
-            i++;
-            }
-        }
-        
-        var finalregionID=regionID-1;
-        regionSelect.selectedIndex=finalregionID; 
-        
-        var provinceID;     
         var provinceSelect = document.getElementById("province");
-        var dataProvince=data[position].province;
+        selectProvince();
+        provinceSelect.selectedIndex=data[position].provinceIndex;
 
-        for (var rp=0; rp<provinceSourceArray.length; rp++)
+        if (cityClickCounter==1)
         {
-            for(var s=0; s<provinceSourceArray[rp].length; s++)
+            var cityrequest = new XMLHttpRequest();
+            cityrequest.open('GET', 'cities.json', true);
+            cityrequest.onload = function () 
             {
-                if (dataProvince==provinceSourceArray[rp][s].provinceName)
-                {
-                    provinceID=s;
-                }
+                var citydata=JSON.parse(cityrequest.response);
+                populateCity(citydata);
+
+                document.getElementById("city").selectedIndex=data[position].cityIndex;
             }
+            cityrequest.send();
+                
         }
+        cityClickCounter=0;
+        barangayClickCounter=1;
 
-        var regionIDp;
-        var regionp=document.getElementById("region").value;
-
-        if (provinceClickCounter==1)
+        if (barangayClickCounter==1)
         {
-            for (var rpp=0; rpp<regionSourceArray.length; rpp++)
+            var barangayRequest = new XMLHttpRequest();
+            barangayRequest.open('GET', 'barangays.json', true);
+            barangayRequest.onload = function () 
             {
-                if (regionp==regionSourceArray[rpp].RegionName)
-                {
-                    regionIDp=regionSourceArray[rpp].RegionID;
-                }
+                var barangayData=JSON.parse(barangayRequest.response);
+                populateBarangayEdit(barangayData);
             }
-        
-            for (var r=0, check=false, p=0;check==false; r++)
-            {
-                if(regionIDp==provinceSourceArray[r][p].regionID)
-                {
-                    for(p=0; p<provinceSourceArray[r].length; p++)
-                    {
-                        provinceSelect.options[p] = new Option(provinceSourceArray[r][p].provinceName, provinceSourceArray[r][p].provinceName);    
-                    }  
-                    check=true; 
-                } 
-            } 
-        }  
-        provinceSelect.selectedIndex=provinceID;  
+            barangayRequest.send();        
+        }
+        barangayClickCounter=0;
 
-        document.getElementById("city").value=data[position].city;
-        document.getElementById("barangay").value=data[position].barangay;
+
         document.getElementById("street").value=data[position].street;
         
         var q=0;
@@ -414,6 +547,9 @@
         table.deleteRow(indexR);
         dataCounter--;
         editClickCounter=0;
-        clearInput();    
-    }
-
+        clearInput();
+        regionClickCounter=0;
+        provinceClickCounter=1;
+        cityClickCounter=1;
+        barangayClickCounter=1;  
+    }        

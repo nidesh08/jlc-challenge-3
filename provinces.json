@@ -1,11 +1,11 @@
 var provinceSourceArray=[
-    [{
+    {
         "provinceID":1,
         "provinceName":"Metro Manila",
         "regionID":1
-    }],
+    },
 
-    [{
+    /*{
         "provinceID":2,
         "provinceName":"Abra",
         "regionID":2
@@ -14,29 +14,29 @@ var provinceSourceArray=[
         "provinceID":3,
         "provinceName":"Apayao",
         "regionID":2
-    },
+    },*/
     {
         "provinceID":4,
         "provinceName":"Benguet",
         "regionID":2
     },
-    {
+    /*{
         "provinceID":5,
         "provinceName":"Ifugao",
         "regionID":2
-    },
+    },*/
     {
         "provinceID":6,
         "provinceName":"Kalinga",
         "regionID":2
     },
-    {
+    /*{
         "provinceID":7,
         "provinceName":"Mountain Province",
         "regionID":2
-    }],
+    },*/
 
-    [{
+    {
         "provinceID":8,
         "provinceName":"Ilocos Norte",
         "regionID":3
@@ -55,13 +55,13 @@ var provinceSourceArray=[
         "provinceID":11,
         "provinceName":"Pangasinan",
         "regionID":3
-    }],
+    },
 
-    [{
+    /*{
         "provinceID":12,
         "provinceName":"Batanes",
         "regionID":4
-    },
+    },*/
     {
         "provinceID":13,
         "provinceName":"Cagayan",
@@ -72,7 +72,7 @@ var provinceSourceArray=[
         "provinceName":"Isabela",
         "regionID":4
     },
-    {
+    /*{
         "provinceID":15,
         "provinceName":"Nueva Vizcaya",
         "regionID":4
@@ -81,13 +81,13 @@ var provinceSourceArray=[
         "provinceID":16,
         "provinceName":"Quirino",
         "regionID":4
-    }],
+    },
 
-    [{
+    {
         "provinceID":17,
         "provinceName":"Aurora",
         "regionID":5
-    },
+    },*/
     {
         "provinceID":18,
         "provinceName":"Bataan",
@@ -108,7 +108,7 @@ var provinceSourceArray=[
         "provinceName":"Pampanga",
         "regionID":5
     },
-    {
+    /*{
         "provinceID":22,
         "provinceName":"Tarlac",
         "regionID":5
@@ -117,9 +117,9 @@ var provinceSourceArray=[
         "provinceID":23,
         "provinceName":"Zambales",
         "regionID":5
-    }],
+    },*/
 
-    [{
+    {
         "provinceID":24,
         "provinceName":"Batangas",
         "regionID":6
@@ -143,9 +143,9 @@ var provinceSourceArray=[
         "provinceID":28,
         "provinceName":"Rizal",
         "regionID":6
-    }],
+    },
 
-    [{
+    /*{
         "provinceID":29,
         "provinceName":"Marinduque",
         "regionID":7
@@ -154,7 +154,7 @@ var provinceSourceArray=[
         "provinceID":30,
         "provinceName":"Occidental Mindoro",
         "regionID":7
-    },
+    },*/
     {
         "provinceID":31,
         "provinceName":"Oriental Mindoro",
@@ -165,32 +165,32 @@ var provinceSourceArray=[
         "provinceName":"Palawan",
         "regionID":7
     },
-    {
+    /*{
         "provinceID":33,
         "provinceName":"Romblon",
         "regionID":7
-    }],
+    },*/
 
-    [{
+    {
         "provinceID":34,
         "provinceName":"Albay",
         "regionID":8
     },
-    {
+    /*{
         "provinceID":35,
         "provinceName":"Camarines Norte",
         "regionID":8
-    },
+    },*/
     {
         "provinceID":36,
         "provinceName":"Camarines Sur",
         "regionID":8
     },
-    {
+    /*{
         "provinceID":37,
         "provinceName":"Catanduanes",
         "regionID":8
-    },
+    },*/
     {
         "provinceID":38,
         "provinceName":"Masbate",
@@ -200,9 +200,9 @@ var provinceSourceArray=[
         "provinceID":39,
         "provinceName":"Sorsogon",
         "regionID":8
-    }],
+    },
     
-    [{
+    /*{
         "provinceID":40,
         "provinceName":"Aklan",
         "regionID":9
@@ -211,17 +211,17 @@ var provinceSourceArray=[
         "provinceID":41,
         "provinceName":"Antique",
         "regionID":9
-    },
+    },*/
     {
         "provinceID":42,
         "provinceName":"Capiz",
         "regionID":9
     },
-    {
+    /*{
         "provinceID":43,
         "provinceName":"Guimaras",
         "regionID":9
-    },
+    },*/
     {
         "provinceID":44,
         "provinceName":"Iloilo",
@@ -231,9 +231,9 @@ var provinceSourceArray=[
         "provinceID":45,
         "provinceName":"Negros Occidental",
         "regionID":9
-    }],
+    },
 
-    [{
+    {
         "provinceID":46,
         "provinceName":"Bohol",
         "regionID":10
@@ -248,17 +248,17 @@ var provinceSourceArray=[
         "provinceName":"Negros Oriental",
         "regionID":10
     },
-    {
+    /*{
         "provinceID":49,
         "provinceName":"Siquijor",
         "regionID":10
-    }],
+    },
 
-    [{
+    {
         "provinceID":50,
         "provinceName":"Biliran",
         "regionID":11
-    },
+    },*/
     {
         "provinceID":51,
         "provinceName":"Eastern Samar",
@@ -269,23 +269,23 @@ var provinceSourceArray=[
         "provinceName":"Leyte",
         "regionID":11
     },
-    {
+    /*{
         "provinceID":53,
         "provinceName":"Northern Samar",
         "regionID":11
-    },
+    },*/
     {
         "provinceID":54,
         "provinceName":"Samar",
         "regionID":11
     },
-    {
+    /*{
         "provinceID":55,
         "provinceName":"Southern Leyte",
         "regionID":11
-    }],
+    },
 
-    [{
+    {
         "provinceID":56,
         "provinceName":"Zamboanga del Norte",
         "regionID":12
@@ -299,18 +299,18 @@ var provinceSourceArray=[
         "provinceID":58,
         "provinceName":"Zamboanga Sibugay",
         "regionID":12
-    }],
+    },*/
 
-    [{
+    {
         "provinceID":59,
         "provinceName":"Bukidnon",
         "regionID":13
     },
-    {
+    /*{
         "provinceID":60,
         "provinceName":"Camiguin",
         "regionID":13
-    },
+    },*/
     {
         "provinceID":61,
         "provinceName":"Lanao del Norte",
@@ -325,13 +325,13 @@ var provinceSourceArray=[
         "provinceID":63,
         "provinceName":"Misamis Oriental",
         "regionID":13
-    }],
+    },
 
-    [{
+    /*{
         "provinceID":64,
         "provinceName":"Davao de Oro",
         "regionID":14
-    },
+    },*/
     {
         "provinceID":65,
         "provinceName":"Davao del Norte",
@@ -342,18 +342,18 @@ var provinceSourceArray=[
         "provinceName":"Davao del Sur",
         "regionID":14
     },
-    {
+    /*{
         "provinceID":67,
         "provinceName":"Davao Occidental",
         "regionID":14
-    },
+    },*/
     {
         "provinceID":68,
         "provinceName":"Davao Oriental",
         "regionID":14
-    }],
+    },
 
-    [{
+    /*{
         "provinceID":69,
         "provinceName":"Cotabato",
         "regionID":15
@@ -372,9 +372,9 @@ var provinceSourceArray=[
         "provinceID":72,
         "provinceName":"Sultan Kudarat",
         "regionID":15
-    }],
+    },*/
 
-    [{
+    {
         "provinceID":73,
         "provinceName":"Agusan del Norte",
         "regionID":16
@@ -384,7 +384,7 @@ var provinceSourceArray=[
         "provinceName":"Agusan del Sur",
         "regionID":16
     },
-    {
+    /*{
         "provinceID":75,
         "provinceName":"Dinagat Islands",
         "regionID":16
@@ -398,9 +398,9 @@ var provinceSourceArray=[
         "provinceID":77,
         "provinceName":"Surigao del Sur",
         "regionID":16
-    }],
+    },*/
 
-    [{
+    {
         "provinceID":78,
         "provinceName":"Basilan",
         "regionID":17
@@ -415,7 +415,7 @@ var provinceSourceArray=[
         "provinceName":"Maguindanao",
         "regionID":17
     },
-    {
+    /*{
         "provinceID":81,
         "provinceName":"Sulu",
         "regionID":17
@@ -424,5 +424,5 @@ var provinceSourceArray=[
         "provinceID":82,
         "provinceName":"Tawi-Tawi",
         "regionID":17
-    }],    
+    },*/    
 ]

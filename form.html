@@ -5,8 +5,8 @@
         <link rel="stylesheet" href="form.css">
         <script src="interests.json"></script>
         <script src="regions.json"></script>
-        <script src="form.js"></script>
         <script src="provinces.json"></script>
+        <script src="form.js"></script>
         <title>Challenge 3</title>
     </head>
     <body onload="interestFunction()">
@@ -72,12 +72,18 @@
                     <tr>
                         <td></td>
                         <td><label for="city">City:</label></td>
-                        <td><input type="text" name="city" id="city" maxlength="50" required autocomplete="off"></td>
+                        <td>
+                            <select id="city" onclick="selectCity()" required>
+                            </select>
+                        </td>
                     </tr>
                     <tr>
                         <td></td>
                         <td><label for="barangay">Barangay:</label></td>
-                        <td><input type="text" name="barangay" id="barangay" maxlength="50" required autocomplete="off"></td>
+                        <td>
+                            <select id="barangay" onclick="selectBarangay()" required>
+                            </select>
+                        </td>
                     </tr>
                     <tr>
                         <td></td>
