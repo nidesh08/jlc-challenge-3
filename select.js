@@ -66,14 +66,20 @@
     {
         if (cityClickCounter==1)
         {
-            let cityRequest = new XMLHttpRequest();
+            /*let cityRequest = new XMLHttpRequest();
             cityRequest.open('GET', 'cities.json', true);
             cityRequest.onload = function () 
             {
                 const cityData=JSON.parse(cityRequest.response);
                 populateCity(cityData);
             }
-            cityRequest.send();
+            cityRequest.send();*/
+
+            $(document).ready(function () {
+                $.getJSON('city.json', function (data) {
+                    console.log(data);
+                });
+            });
                 
         }
         cityClickCounter=0;
@@ -113,101 +119,7 @@
             }
         }
     }
-    function selectBarangay()
-    {
-        if (barangayClickCounter==1)
-        {
-            let barangayRequest = new XMLHttpRequest();
-            barangayRequest.open('GET', 'barangays.json', true);
-            barangayRequest.onload = function () 
-            {
-                const barangayData=JSON.parse(barangayRequest.response);
-                populateBarangay(barangayData);
-            }
-            barangayRequest.send();        
-        }
-        barangayClickCounter=0;
-    }
-
-    function populateBarangay(barangayData)
-    {
-            let cityRequest = new XMLHttpRequest();
-            cityRequest.open('GET', 'cities.json', true);
-            cityRequest.onload = function () 
-            {
-                const cityData=JSON.parse(cityRequest.response);                
-                for (let i=0; i<barangayData.length; i++)
-                {
-                    barangayArray=barangayData;
-                    var barangaySelect=document.getElementById("barangay");
-                    var cityID;
-                    var cityValue=document.getElementById("city").value;
-                    var barangayCounter=0;
-                    barangaySelect.innerHTML="";
-                    for (var pc=0; pc<cityData.length; pc++)
-                    {
-                        if (cityValue==cityData[pc].cityName)
-                        {
-                            cityID=cityData[pc].cityID;
-                        }
-                    }
-        
-                    while (barangayCounter<barangayArray.length)
-                    {
-                        var barangayOption;
-                        if (cityID==barangayArray[barangayCounter].cityID)
-                        {
-                            barangayOption=document.createElement("option");
-                            barangayOption.text=barangayArray[barangayCounter].barangayName;
-                            barangayOption.value=barangayArray[barangayCounter].barangayName;
-                            barangaySelect.append(barangayOption);
-                        }    
-                        barangayCounter++;
-                    }
-                }
-            }
-            cityRequest.send();
-    }
-    function populateBarangayEdit(barangayData)
-    {
-            let cityRequest = new XMLHttpRequest();
-            cityRequest.open('GET', 'cities.json', true);
-            cityRequest.onload = function () 
-            {
-                const cityData=JSON.parse(cityRequest.response);                
-                for (let i=0; i<barangayData.length; i++)
-                {
-                    barangayArray=barangayData;
-                    var barangaySelect=document.getElementById("barangay");
-                    var cityID;
-                    var cityValue=document.getElementById("city").value;
-                    var barangayCounter=0;
-                    barangaySelect.innerHTML="";
-                    for (var pc=0; pc<cityData.length; pc++)
-                    {
-                        if (cityValue==cityData[pc].cityName)
-                        {
-                            cityID=cityData[pc].cityID;
-                        }
-                    }
-        
-                    while (barangayCounter<barangayArray.length)
-                    {
-                        var barangayOption;
-                        if (cityID==barangayArray[barangayCounter].cityID)
-                        {
-                            barangayOption=document.createElement("option");
-                            barangayOption.text=barangayArray[barangayCounter].barangayName;
-                            barangayOption.value=barangayArray[barangayCounter].barangayName;
-                            barangaySelect.append(barangayOption);
-                        }    
-                        barangayCounter++;
-                    }
-                }
-                document.getElementById("barangay").selectedIndex=data[position+1].barangayIndex;
-            }
-            cityRequest.send();
-    }
+    
 
     function show()
     {
@@ -279,31 +191,19 @@
 
         if (cityClickCounter==1)
         {
-            let cityrequest = new XMLHttpRequest();
-            cityrequest.open('GET', 'cities.json', true);
-            cityrequest.onload = function () 
-            {
-                const citydata=JSON.parse(cityrequest.response);
-                populateCity(citydata);
-
-                document.getElementById("city").selectedIndex=data[position+1].cityIndex;
+            
+            $(document).ready(function(){
+                $.getJSON("cities.json", function(cityData){
+                    populateCity(cityData)
+                }).fail(function(){
+                    console.log("An error has occurred.");
+                });
+            });
             }
-            cityrequest.send();
                 
-        }
+        
         cityClickCounter=0;
         barangayClickCounter=1;
 
-        if (barangayClickCounter==1)
-        {
-            let barangayRequest = new XMLHttpRequest();
-            barangayRequest.open('GET', 'barangays.json', true);
-            barangayRequest.onload = function () 
-            {
-                const barangayData=JSON.parse(barangayRequest.response);
-                populateBarangayEdit(barangayData);
-            }
-            barangayRequest.send();        
-        }
-        barangayClickCounter=0;
+       
     }
