@@ -1,4 +1,4 @@
-[
+var barangaySourceArray=[
 	{
 		"barangayID":1,
 		"barangayName":"La Paz",
@@ -21,7 +21,7 @@
 	},
 	{
 		"barangayID":5,
-		"barangayName":"New Zañiga",
+		"barangayName":"New Zaniga",
 		"cityID":2
 	},
 	{
@@ -101,7 +101,7 @@
 	},	
 	{
 		"barangayID":21,
-		"barangayName":"Cabañgan",
+		"barangayName":"Cabangan",
 		"cityID":9
 	},
 	{
@@ -121,7 +121,7 @@
 	},
 	{
 		"barangayID":25,
-		"barangayName":"Cabagñan",
+		"barangayName":"Cabagnan",
 		"cityID":11
 	},
 	{
@@ -176,7 +176,7 @@
 	},
 	{
 		"barangayID":36,
-		"barangayName":"Montaña",
+		"barangayName":"Montana",
 		"cityID":17
 	},
 	{
