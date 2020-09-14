@@ -1,27 +1,16 @@
-body
-{
-    background-color:snow;
-}
-table
-{
-    margin:0 auto;
-    border:solid;
-    font-size: 15px;
-    box-shadow: 5px 5px 10px darkgray;
-}
-#formTable, #dataTable
+#formTable
 {
     background-color:antiquewhite;
     border: 5px solid saddlebrown;
-}
-th
-{
-    background-color:saddlebrown;
-    color:antiquewhite;
+    font-size: 14px;
 }
 #dataTable, #msg, #msg1, #msg2
 {
     text-align:center;
+}
+#dataTable
+{
+    font-size: 12px;
 }
 input, select
 {
@@ -47,7 +36,7 @@ img
     opacity:0;
 }
 input[type=radio]:checked + label>img {
-    border: 2px solid saddlebrown;
+    border: 2px solid gray;
     border-radius:100px;
 }
 #street
@@ -62,23 +51,15 @@ input[type=radio]:checked + label>img {
 {
     text-align:center;
 } 
-#submit
+
+td
 {
-    height:25px;
-    width:70px;
-    background-color:saddlebrown;
-    color:antiquewhite;
-    border:0px;
-    border-radius:5px;
-    box-shadow: 5px 5px 30px darkgray;
+    width:140px;
 }
-.heading
+th
 {
-    width:200px;
-    text-align:center;
+    width:200px; 
 }
-.heading1
-{
-    width:250px;
-}
+
+
 

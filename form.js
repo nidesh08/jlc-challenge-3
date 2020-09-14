@@ -131,8 +131,8 @@
         var interestList=document.getElementById("interestDisplay");
         for (x=0; x<interestSourceArray.length; x++)
         {
-            interestList.innerHTML+='<input type="checkbox" id="'+interestSourceArray[x].interestId+'" name="interest" value="'+interestSourceArray[x].interestId+'">' +
-            '<label for="'+interestSourceArray[x].interestId+'">' + interestSourceArray[x].interestName + '<label>' + '<br>'
+            interestList.innerHTML+='<br>'+'<input type="checkbox" id="'+interestSourceArray[x].interestId+'" name="interest" value="'+interestSourceArray[x].interestId+'">' +
+            '<label for="'+interestSourceArray[x].interestId+'">' + '&nbsp&nbsp'+interestSourceArray[x].interestName + '<label>';
         }
     }
 
@@ -229,7 +229,9 @@
                     {
                         var table=document.getElementById("dataTable");
                         var join=data[dataCounter].interest.join("<br>");
-                        var row=table.insertRow(dataCounter+1);
+                        var row=table.insertRow(dataCounter);
+                        //row.setAttribute('id', 'dataCounter');
+                        
                         var cell1=row.insertCell(0);
                         var cell2=row.insertCell(1);
                         var cell3=row.insertCell(2);
@@ -243,6 +245,18 @@
                         var cell11=row.insertCell(10);
                         var cell12=row.insertCell(11);
 
+                        cell1.setAttribute('onclick', 'dataModal(this)');
+                        cell2.setAttribute('onclick', 'dataModal(this)');
+                        cell3.setAttribute('onclick', 'dataModal(this)');
+                        cell4.setAttribute('onclick', 'dataModal(this)');
+                        cell5.setAttribute('onclick', 'dataModal(this)');
+                        cell6.setAttribute('onclick', 'dataModal(this)');
+                        cell7.setAttribute('onclick', 'dataModal(this)');
+                        cell8.setAttribute('onclick', 'dataModal(this)');
+                        cell9.setAttribute('onclick', 'dataModal(this)');
+                        cell10.setAttribute('onclick', 'dataModal(this)');
+                        cell11.setAttribute('onclick', 'dataModal(this)');
+
                         cell1.innerHTML=data[dataCounter].firstName;
                         cell2.innerHTML=data[dataCounter].lastName;
                         cell3.innerHTML=data[dataCounter].middleName;
@@ -254,8 +268,8 @@
                         cell9.innerHTML=data[dataCounter].barangay;
                         cell10.innerHTML=data[dataCounter].street;
                         cell11.innerHTML=join;
-                        cell12.innerHTML='<button type="button" id="editBtn" onclick="editFunction(this)"><i class="fa fa-pencil-square-o"></i></button>'+' '+
-                                        '<button type="button" id="deleteBtn" onclick="deleteFunction(this)"><i class="fa fa-times"></i></button>';
+                        cell12.innerHTML='<button type="button" id="editBtn" onclick="editFunction(this)" class="btn btn-warning"><i class="fa fa-pencil-square-o"></i></button>'+' '+
+                                        '<button type="button" id="deleteBtn" onclick="deleteFunction(this)" class="btn btn-danger"><i class="fa fa-times"></i></button>';
                         
                         dataCounter++;  
                         clearInput();
@@ -326,8 +340,8 @@
                         table.rows[indexR].cells[8].innerHTML=data[position].barangay;
                         table.rows[indexR].cells[9].innerHTML=data[position].street;
                         table.rows[indexR].cells[10].innerHTML=join;
-                        table.rows[indexR].cells[11].innerHTML='<button type="button" id="editBtn" onclick="editFunction(this)"><i class="fa fa-pencil-square-o"></i></button>'+' '+
-                                                                '<button type="button" id="deleteBtn" onclick="deleteFunction(this)"><i class="fa fa-times"></i></button>';
+                        table.rows[indexR].cells[11].innerHTML='<button type="button" id="editBtn" onclick="editFunction(this)" class="btn btn-warning"><i class="fa fa-pencil-square-o"></i></button>'+' '+
+                                                                '<button type="button" id="deleteBtn" onclick="deleteFunction(this)" class="btn btn-danger"><i class="fa fa-times"></i></button>';
                         editClickCounter=0;
                         clearInput();        
                 }
@@ -366,7 +380,7 @@
     function editFunction(w)
     {
         indexR=w.parentNode.parentNode.rowIndex;//starts with 2
-        position=indexR-1;
+        position=indexR;
         document.getElementById("province").innerHTML="";
         document.getElementById("region").innerHTML="";
         document.getElementById("city").innerHTML="";
@@ -435,7 +449,7 @@
     {
         var table=document.getElementById("dataTable");
         indexR=w.parentNode.parentNode.rowIndex;
-        data.splice(indexR-1,1);
+        data.splice(indexR,1);
         table.deleteRow(indexR);
         dataCounter--;
         editClickCounter=0;
@@ -444,4 +458,24 @@
         provinceClickCounter=1;
         cityClickCounter=1;
         barangayClickCounter=1;  
-    }        
+    }  
+ 
+    function dataModal(w)
+    {
+        position=w.parentNode.rowIndex;
+        var join=data[position].interest.join("<br>");
+        
+        document.getElementById("modalFirstName").innerHTML=data[position].firstName;
+        document.getElementById("modalLastName").innerHTML=data[position].lastName;
+        document.getElementById("modalMiddleName").innerHTML=data[position].middleName;
+        document.getElementById("modalBirthDate").innerHTML=data[position].birthDate;
+        document.getElementById("modalGender").innerHTML=data[position].gender;
+        document.getElementById("modalRegion").innerHTML=data[position].region;
+        document.getElementById("modalProvince").innerHTML=data[position].province;
+        document.getElementById("modalCity").innerHTML=data[position].city;
+        document.getElementById("modalBarangay").innerHTML=data[position].barangay;
+        document.getElementById("modalStreet").innerHTML=data[position].street;
+        document.getElementById("modalInterest").innerHTML=join;
+
+        $("#myModal").modal(); 
+    }
