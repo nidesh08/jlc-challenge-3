@@ -163,6 +163,7 @@
         }
         else
         {
+              
             document.getElementById("msg").innerHTML="";
             document.getElementById("msg1").innerHTML="";
             document.getElementById("msg2").innerHTML="";
@@ -345,13 +346,15 @@
                         editClickCounter=0;
                         clearInput();        
                 }
+                $("#formModal").modal("hide");
             } 
+           //   
         }   
         regionClickCounter=0;
         provinceClickCounter=1;
         cityClickCounter=1;
         barangayClickCounter=1;
-            
+          
     }
 
     function clearInput()
@@ -385,6 +388,7 @@
         document.getElementById("region").innerHTML="";
         document.getElementById("city").innerHTML="";
         document.getElementById("barangay").innerHTML="";
+        document.getElementById("modalTitle").innerHTML="Edit Data";
         regionClickCounter=0;
         provinceClickCounter=1;
         cityClickCounter=1;
@@ -443,6 +447,8 @@
             } 
         }
         editClickCounter=1;
+        $("#formModal").modal("show");
+
     }
 
     function deleteFunction(w)
@@ -477,5 +483,17 @@
         document.getElementById("modalStreet").innerHTML=data[position].street;
         document.getElementById("modalInterest").innerHTML=join;
 
-        $("#myModal").modal(); 
+        $("#dataModal").modal("show"); 
+    }
+
+    function formModal()
+    {
+        clearInput();
+        document.getElementById("modalTitle").innerHTML="Create New Data";
+        $("#formModal").modal("show");
+        editClickCounter=0;
+        regionClickCounter=0;
+        provinceClickCounter=1;
+        cityClickCounter=1;
+        barangayClickCounter=1;
     }

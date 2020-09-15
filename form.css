@@ -1,7 +1,5 @@
 #formTable
 {
-    background-color:antiquewhite;
-    border: 5px solid saddlebrown;
     font-size: 14px;
 }
 #dataTable, #msg, #msg1, #msg2
@@ -11,10 +9,6 @@
 #dataTable
 {
     font-size: 12px;
-}
-input, select
-{
-    border: 1px solid saddlebrown;
 }
 #birthDate
 {
@@ -27,8 +21,9 @@ input, select
 }
 img
 {
-    height: 40px;
-    width: 40px;
+    height: 35px;
+    width: 35px;
+    margin-top: 7px;
 }
 .radioHidden
 {
@@ -60,6 +55,16 @@ th
 {
     width:200px; 
 }
-
-
+#dataTable tr:not(:first-child):hover {
+    background-color:#505050ac;
+}
+.input-group
+{
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.containerbg
+{
+    margin:20px;
+}
 
