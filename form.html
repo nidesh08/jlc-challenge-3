@@ -24,8 +24,8 @@
 
     <body onload="interestFunction()">
         <br><br>
-        <div class="text-center">
-            <button type="button" class="btn btn-info" onclick="formModal()">Create New Record</button>
+        <div class="d-flex justify-content-center">
+            <div class="mx-auto"><button type="button" class="btn btn-info" onclick="formModal()">Create New Record</button></div>
         </div>
 
         <div class="modal fade" id="formModal" data-backdrop="static" tabindex="-1" role="dialog">
@@ -38,162 +38,65 @@
                   
                 </div>
                 <div class="modal-body">
-                    <div class="containerbg">
+                    <div class="container">
                         <form action="">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">First Name:</span>
-                                        </div>
-                                        <input type="text" class="form-control" name="firstName" id="firstName" maxlength="50" 
-                                        pattern="[a-zA-Z]+" title="Cannot have numbers" required autocomplete="off">
-                                        
-                                    </div>
-                                </div>     
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <p id="msg"></p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Last Name:</span>
-                                            </div>
-                                            <input type="text" class="form-control" name="lastName" id="lastName" maxlength="50"
-                                            pattern="[a-zA-Z]+" title="Cannot have numbers" required autocomplete="off">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <p id="msg1"></p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Middle Name:</span>
-                                            </div>
-                                            <input type="text" class="form-control" name="middleName" id="middleName" maxlength="50"
-                                            pattern="[a-zA-Z]+" title="Cannot have numbers" autocomplete="off">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <p id="msg2"></p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Birth Date:</span>
-                                            </div>
-                                            <input type="date" class="form-control" name="birthDate" id="birthDate" required>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Gender:</span>
-                                            </div>
-                                            <div class="form-control">
-                                                <input type="radio" name="gender" id="genderMale" value="Male" class="radioHidden" required>
-                                                <label for="genderMale"><img src="male.png"></label> &nbsp;
-                                                <input type="radio" name="gender" id="genderFemale"  value="Female" class="radioHidden" required>
-                                                <label for="genderFemale"><img src="female.png"></label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                        
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Address:</span>
-                                            </div>
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Region:</span>
-                                            </div>
-                                            <select class="form-control" id="region" onclick="selectRegion()" required></select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                            </div>
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Province:</span>
-                                            </div>
-                                            <select class="form-control" id="province" onclick="selectProvince()" required></select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                            </div>
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">City:</span>
-                                            </div>
-                                            <select class="form-control" id="city" onclick="selectCity()" required></select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                            </div>
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Barangay:</span>
-                                            </div>
-                                            <select class="form-control" id="barangay" onclick="selectBarangay()" required></select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                            </div>
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Street:</span>
-                                            </div>
-                                            <input class="form-control" type="text" name="street" id="street" maxlength="100" required autocomplete="off">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Interest/s:</span>
-                                            </div>
-                                            <div class="form-control" id="interestDisplay"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="button">
-                                    <button type="submit" id="submit" class="btn btn-success" onclick="submitForm()">Submit</button>
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                </div>
+                            <div class="form-group">
+                                <label for="firstName">First Name:</label>
+                                <input type="text" class="form-control" name="firstName" id="firstName" maxlength="50" 
+                                pattern="[a-zA-Z]+" title="Cannot have numbers" required autocomplete="off">
+                                <p id="msg"></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name:</label>
+                                <input type="text" class="form-control" name="lastName" id="lastName" maxlength="50"
+                                pattern="[a-zA-Z]+" title="Cannot have numbers" required autocomplete="off">
+                                <p id="msg1"></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="middleName">Middle Name:</label>
+                                <input type="text" class="form-control" name="middleName" id="middleName" maxlength="50"
+                                pattern="[a-zA-Z]+" title="Cannot have numbers" autocomplete="off">
+                                <p id="msg2"></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="birthDate">Birth Date:</label>
+                                <input type="date" class="form-control" name="birthDate" id="birthDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Gender:</label>
+                                <input type="radio" name="gender" id="genderMale" value="Male" class="radioHidden" required>
+                                <label for="genderMale"><img src="male.png"></label> &nbsp;
+                                <input type="radio" name="gender" id="genderFemale"  value="Female" class="radioHidden" required>
+                                <label for="genderFemale"><img src="female.png"></label>
+                            </div>
+                            <div class="form-group">
+                                <label for="region">Region:</label>
+                                <select class="form-control" id="region" onclick="selectRegion()" required></select>
+                            </div>   
+                            <div class="form-group">
+                                <label for="province">Province:</label>
+                                <select class="form-control" id="province" onclick="selectProvince()" required></select>
+                            </div> 
+                            <div class="form-group">
+                                <label for="city">City:</label>
+                                <select class="form-control" id="city" onclick="selectCity()" required></select>
+                            </div> 
+                            <div class="form-group">
+                                <label for="barangay">Barangay:</label>
+                                <select class="form-control" id="barangay" onclick="selectBarangay()" required></select>
+                            </div> 
+                            <div class="form-group">
+                                <label for="street">Street:</label>
+                                <input class="form-control" type="text" name="street" id="street" maxlength="100" required autocomplete="off">
+                            </div>
+                            <div class="form-group">
+                                <label for="interestDisplay">Interest/s:</label>
+                                <div class="form-control" id="interestDisplay"></div>
+                            </div>
+                            <div class="button">
+                                <button type="submit" id="submit" class="btn btn-success" onclick="submitForm()">Submit</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
                             
                         </form>
                     </div>

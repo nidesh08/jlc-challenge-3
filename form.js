@@ -130,9 +130,18 @@
     {
         var interestList=document.getElementById("interestDisplay");
         for (x=0; x<interestSourceArray.length; x++)
-        {
-            interestList.innerHTML+='<br>'+'<input type="checkbox" id="'+interestSourceArray[x].interestId+'" name="interest" value="'+interestSourceArray[x].interestId+'">' +
-            '<label for="'+interestSourceArray[x].interestId+'">' + '&nbsp&nbsp'+interestSourceArray[x].interestName + '<label>';
+        { 
+            if (x==0)
+            {
+                interestList.innerHTML+='<input type="checkbox" id="'+interestSourceArray[x].interestId+'" name="interest" value="'+interestSourceArray[x].interestId+'">' +
+                '<label for="'+interestSourceArray[x].interestId+'">' + '&nbsp&nbsp'+interestSourceArray[x].interestName +'<label>';
+            }
+            else
+            {
+                interestList.innerHTML+='<br>'+'<input type="checkbox" id="'+interestSourceArray[x].interestId+'" name="interest" value="'+interestSourceArray[x].interestId+'">' +
+                '<label for="'+interestSourceArray[x].interestId+'">' + '&nbsp&nbsp'+interestSourceArray[x].interestName +'<label>';
+            }
+           
         }
     }
 

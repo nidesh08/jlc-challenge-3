@@ -2,27 +2,19 @@
 {
     font-size: 14px;
 }
-#dataTable, #msg, #msg1, #msg2
-{
-    text-align:center;
-}
 #dataTable
 {
+    text-align:center;
     font-size: 12px;
 }
 #birthDate
 {
-    width:300px;
     text-align:center;
-}
-#firstName, #lastName, #middleName
-{
-    width:300px;
 }
 img
 {
-    height: 35px;
-    width: 35px;
+    height: 50px;
+    width: 50px;
     margin-top: 7px;
 }
 .radioHidden
@@ -31,22 +23,13 @@ img
     opacity:0;
 }
 input[type=radio]:checked + label>img {
-    border: 2px solid gray;
+    border: 2px solid rgb(85, 162, 238);
     border-radius:100px;
-}
-#street
-{
-    width:220px;
-}
-#province, #region, #city, #barangay
-{
-    width:225px;
 }
 .button
 {
     text-align:center;
 } 
-
 td
 {
     width:140px;
@@ -63,8 +46,12 @@ th
     font-size: 18px;
     margin-bottom: 10px;
 }
-.containerbg
+p
 {
-    margin:20px;
+    text-align: left;
+}
+body
+{
+    background-color: #fff;
 }
 
